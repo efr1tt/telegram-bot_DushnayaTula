@@ -11,15 +11,15 @@ const startGame = async (chatId) => {
   // await bot.sendMessage(chatId, 'Если не угадаешь, то конечно будет пить - куда он денется!')
   const randomNumber = Math.floor(Math.random() * 10)
   chats[chatId] = randomNumber
-  // await bot.sendMessage(chatId, 'Отгадывай', gameOptions)
-  await bot.sendMessage(chatId, 'Если не угадаешь - будет бухать!', gameOptions)
+  await bot.sendMessage(chatId, 'Отгадывай', gameOptions)
+  // await bot.sendMessage(chatId, 'Если не угадаешь - будет бухать!', gameOptions)
 }
 
 const start = () => {
   bot.setMyCommands([
     { command: '/start', description: 'Начальное приветствие!' },
     // { command: '/info', description: 'Получить информацию о пользователе!' },
-    { command: '/game', description: 'Будет ли бухать Спас?' },
+    { command: '/game', description: 'go game' },
     { command: '/list', description: 'Посмотреть уровни душнил' },
     // { command: '/fap_fap', description: 'fap-fap' },
   ])
@@ -65,12 +65,12 @@ const start = () => {
       return startGame(chatId)
     }
     if (Number(data) === chats[chatId]) {
-      console.log('data: ', data)
-      // return await bot.sendMessage(chatId, `Поздравляю ты отгадал цифру ${chats[chatId]}`, againOptions)
-      return await bot.sendMessage(chatId, `Цифра совпала, но всё равно 18.11 is coming...`, againOptions)
+      // console.log('data: ', data)
+      return await bot.sendMessage(chatId, `Поздравляю ты отгадал цифру ${chats[chatId]}`, againOptions)
+      // return await bot.sendMessage(chatId, `Цифра совпала, но всё равно 18.11 is coming...`, againOptions)
     } else {
-      // return await bot.sendMessage(chatId, `К сожалению ты не угадал, бот загадал цифру ${chats[chatId]}`, againOptions)
-      return await bot.sendMessage(chatId, `Спас будет бухать! ботяра загадал цифру ${chats[chatId]}`, againOptions)
+      return await bot.sendMessage(chatId, `К сожалению ты не угадал, бот загадал цифру ${chats[chatId]}`, againOptions)
+      // return await bot.sendMessage(chatId, `Спас будет бухать! ботяра загадал цифру ${chats[chatId]}`, againOptions)
     }
   })
 }
